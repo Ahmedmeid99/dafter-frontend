@@ -1,0 +1,14 @@
+.notfind {
+  text-align: center;
+  margin: 10rem auto;
+}
+.notfind h3 {
+  font-size: 3rem;
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+.notfind p {
+  font-size: 2rem;
+  color: #ccc;
+  font-weight: 500;
+}

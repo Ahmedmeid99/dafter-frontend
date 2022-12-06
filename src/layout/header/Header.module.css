@@ -1,0 +1,230 @@
+/* ************************************************* */
+.app .container {
+  position: relative;
+}
+.header {
+  position: relative;
+}
+/* ************************************************* */
+.navbar {
+  font-size: 1.6rem;
+  box-shadow: 0px 1px 7px rgb(0 0 0 / 30%);
+  padding: 1.5rem 3rem;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 500px) {
+  .navbar .container.nav {
+    width: 100%;
+  }
+}
+
+.navbar .nav > .icon {
+  font-size: 3rem;
+  cursor: pointer;
+  color: #1b58aa;
+}
+.navbar .logo {
+  font-size: 4rem;
+  font-family: "Cairo Play", cursive;
+  color: #1b58aa;
+}
+@media (max-width: 500px) {
+  .navbar .logo {
+    font-size: 2.5rem;
+  }
+  .navbar > .icon {
+    font-size: 2.5rem;
+  }
+}
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40rem;
+  /* background: linear-gradient(45deg, #1939b7, #0f9fff); */
+  background: #1b58aa;
+  height: 100vh;
+  z-index: 999;
+  transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.menu::after {
+  content: "";
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 50%;
+  background: #082e6226;
+  z-index: -1;
+}
+.menu::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 50%;
+  height: 50%;
+  background: #082e6226;
+  z-index: -1;
+}
+@media (max-width: 500px) {
+  .menu {
+    width: 100%;
+  }
+}
+.menu.open-menu {
+  left: 0;
+}
+.menu.close-menu {
+  left: -51rem;
+}
+.icon-new,
+.icon-close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0px 1px 3px #0003;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.icon-close {
+  position: absolute;
+  top: 4rem;
+  right: 2rem;
+  background: #fff;
+  width: 4rem;
+  height: 4rem;
+  transition: 0.3s;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0px 1px 3px #0003;
+}
+.icon-close .icon {
+  color: #1b58aa;
+  font-size: 2rem;
+}
+
+.menu .menu-list {
+  list-style: none;
+  width: 50%;
+  position: relative;
+}
+.menu .menu-list::before {
+  content: "";
+  width: 30rem;
+  height: 30rem;
+  border-radius: 50%;
+  background: #0c40858c;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+.menu .menu-list::after {
+  content: "";
+  width: 60rem;
+  height: 60rem;
+  border-radius: 50%;
+  background: #0f438c85;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+.menu .menu-list li a {
+  margin: 0 auto 1rem auto;
+  font-size: 2rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+  color: #002240;
+  box-shadow: 4px 3px 3px #0000004d, 1px 2px 3px #ffffff4d inset;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  display: block;
+  text-decoration: none;
+}
+.menu .menu-list li a:hover {
+  background: aliceblue;
+}
+.menu .menu-list li .icon {
+  margin-right: 1rem;
+}
+.menu .menu-list li a.active {
+  background: aliceblue;
+}
+
+/* .menu .menu-list li:hover {
+    color: #0468c1;
+  } */
+/* ************************************************* */
+/* ************************************************* */
+.profile {
+  position: absolute;
+  top: 4rem;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.profile .img {
+  width: 4rem;
+  height: 4rem;
+  background: #2692f2;
+  color: aliceblue;
+  border-radius: 50%;
+  font-size: 2rem;
+  line-height: 4rem;
+  text-align: center;
+  font-weight: 600;
+}
+.profile .info .name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2692f2;
+}
+.profile .info .email {
+  font-size: 1.2rem;
+  color: #ccc;
+  font-style: italic;
+}
+/* ************************************************* */
+.action_btn {
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+.action_btn .btn_logout {
+  box-shadow: 0px 3px 14px #8cbeff;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background: #eee;
+  color: #333;
+  font-size: 2rem;
+}
+.action_btn .btn_new_acount {
+  box-shadow: 0px 3px 14px #8cbeff;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid #fff;
+  background: #13478c;
+  color: #fff;
+  font-size: 2rem;
+}

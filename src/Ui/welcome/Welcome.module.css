@@ -1,0 +1,37 @@
+.welcome {
+  position: absolute;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  background: #008000b0;
+  padding: 3rem;
+  font-size: 1.6rem;
+  color: #2ebc54;
+  backdrop-filter: blur(3px);
+}
+@media (max-width: 500px) {
+  .welcome {
+    padding: 1rem;
+  }
+}
+.welcome > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.message {
+  display: flex;
+  align-items: center;
+}
+.welcome_text,
+.message .icon {
+  margin-right: 1rem;
+}
+.username {
+  font-weight: 600;
+  font-size: 2rem;
+  color: #09ff53;
+}
+.welcome > div > .icon {
+  cursor: pointer;
+}

@@ -1,0 +1,134 @@
+.item {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding:2rem .5rem 2rem 2rem;
+  margin: 1.5rem auto;
+  box-shadow: 0px 1px 3px rgb(0 0 0 / 25%);
+  position: relative;
+  transition: 0.3s;
+  background: #333;
+}
+.item-completed {
+  border-bottom: 3px solid green;
+}
+.item .check {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1.5rem;
+  border: 3px solid #ccc;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+}
+.item .check-completed {
+  border: 3px solid #00800050;
+  transition: 0.3s;
+}
+.check .icon {
+  position: absolute;
+  font-size: 1.8rem;
+  top: 40%;
+  transform: translateY(-50%);
+  left: 0;
+  color: green;
+  transition: 0.3s;
+}
+/* ***************************** */
+.show-task {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 90%;
+  height: fit-content;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  padding: 2rem;
+  z-index: 999;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.flex > span {
+  background: #0f67b4;
+  padding: 0.7rem 1rem;
+  color: #eee;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+.show-task h3 {
+  font-size: 2.2rem;
+}
+.show-task p {
+  line-height: 2;
+  font-size: 1.5rem;
+  overflow-wrap: anywhere;
+}
+/* ***************************** */
+.item .text {
+  font-size: 1.6rem;
+  flex-basis: 40%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  z-index: 3;
+}
+.item .type{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  overflow-y: clip;
+}
+.item .type .after {
+  border: 3.1rem solid;
+  position: absolute;
+  left: 100%;
+  top: 0rem;
+  border-bottom-color: transparent !important;
+  border-right-color: transparent !important;
+
+}
+.item .icon {
+  font-size: 2rem;
+  cursor: pointer;
+  width:2rem;
+}
+.item ul.item-list {
+  position: absolute;
+  top: 70%;
+  right: 2rem;
+  list-style: none;
+  width: 14rem;
+  background: #fff;
+  border: 1px solid #eee;
+  z-index: 99;
+}
+.item ul.item-list > li {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 1.3rem;
+  border-bottom: 1px solid #eee;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.item ul.item-list > li:hover {
+  color: #0468c1;
+}
+.item .date {
+  font-size: 1.5rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 4rem;
+  color: #aaa;
+  font-style: italic;
+}
