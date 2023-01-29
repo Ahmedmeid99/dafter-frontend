@@ -48,7 +48,6 @@ let arr_img = [
     , bg_photo_41
 ]
 
-console.log(arr_img)
 export function get_random_img() {
     const randomImgIndex = Math.floor(Math.random() * 41)
     return arr_img[randomImgIndex]
