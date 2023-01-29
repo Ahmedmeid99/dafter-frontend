@@ -59,6 +59,7 @@
 }
 /* ***************************** */
 .item .text {
+  color: #fff;
   font-size: 1.6rem;
   flex-basis: 40%;
   overflow: hidden;
@@ -68,7 +69,7 @@
 .item .icon {
   font-size: 2rem;
   cursor: pointer;
-  width:2rem;
+  width: 2rem;
 }
 .item ul.item-list {
   position: absolute;
@@ -93,7 +94,7 @@
   color: #0468c1;
 }
 .item .date {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);

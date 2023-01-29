@@ -56,7 +56,7 @@ const Note = (props) => {
             const dateArr = oldDate.replace(/T/, ' ').replace(/\..+/, '').split(' ')
             const date = dateArr[0].split('-')
             const time = dateArr[1].split(':')
-            updatedAt = `${date[2]}/${date[1]}/${date[0]} ${time[0]}:${time[1]}`
+            updatedAt = `${date[2]}/${date[1]}/${date[0]}  ${time[0]}:${time[1]}`
             return updatedAt
         } else {
             return updatedAt
@@ -112,7 +112,7 @@ const Note = (props) => {
             { listBgState && <div className="list-bg" onClick={ closeItemList }></div> }
             {/* *************************** */ }
             <li className={ classes.item }>
-           <div className={classes.type} style={ {background: typeColor } }><div style={ {"border-color": typeColor } } className={classes.after}></div></div>
+                <div className={ classes.type } style={ { background: typeColor } }><div style={ { "border-color": typeColor } } className={ classes.after }></div></div>
                 <div className={ classes.text }>{ props.item.title }</div>
                 <FontAwesomeIcon onClick={ openItemList } className={ classes.icon } icon={ faEllipsisVertical } />
                 <div className={ classes.date }>{ updatedAt }</div>

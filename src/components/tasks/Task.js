@@ -60,7 +60,7 @@ const Task = (props) => {
             const dateArr = oldDate.replace(/T/, ' ').replace(/\..+/, '').split(' ')
             const date = dateArr[0].split('-')
             const time = dateArr[1].split(':')
-            updatedAt = `${date[2]}/${date[1]}/${date[0]} ${time[0]}:${time[1]}`
+            updatedAt = `${date[2]}/${date[1]}/${date[0]}  ${time[0]}:${time[1]}`
             return updatedAt
         } else {
             return updatedAt

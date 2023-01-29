@@ -3,7 +3,7 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding:2rem .5rem 2rem 2rem;
+  padding: 2rem 0.5rem 2rem 2rem;
   margin: 1.5rem auto;
   box-shadow: 0px 1px 3px rgb(0 0 0 / 25%);
   position: relative;
@@ -72,6 +72,7 @@
 }
 /* ***************************** */
 .item .text {
+  color: #fff;
   font-size: 1.6rem;
   flex-basis: 40%;
   overflow: hidden;
@@ -79,7 +80,7 @@
   white-space: nowrap;
   z-index: 3;
 }
-.item .type{
+.item .type {
   position: absolute;
   top: 0;
   left: 0;
@@ -94,12 +95,11 @@
   top: 0rem;
   border-bottom-color: transparent !important;
   border-right-color: transparent !important;
-
 }
 .item .icon {
   font-size: 2rem;
   cursor: pointer;
-  width:2rem;
+  width: 2rem;
 }
 .item ul.item-list {
   position: absolute;
@@ -124,7 +124,7 @@
   color: #0468c1;
 }
 .item .date {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
