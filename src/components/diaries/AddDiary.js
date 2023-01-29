@@ -17,7 +17,7 @@ const AddDiary = (props) => {
         const diary = {
             title: inputRef.current.value,
             subTitle: subTitleRef.current.value,
-            descriptio: textareaRef.current.value,
+            description: textareaRef.current.value,
             points: []
         }
         addDiary(diary)

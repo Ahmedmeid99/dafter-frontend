@@ -29,3 +29,13 @@ export const deleteUser = () => {
         }
     }).then((data) => data.json()).then((res) => console.log(res))
 }
+export const addUserAvater = (img) => {
+    fetch(`${URL}/api/users/me/avater`, {
+        method: 'POST',
+        body: JSON.stringify(img),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token
+        }
+    }).then((data) => data.json()).then((res) => console.log(res))
+}

@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEllipsisVertical, faCheck, faXmark, faTrash, faEye, faPen } from "@fortawesome/free-solid-svg-icons"
+import { faEllipsisVertical, faImages } from "@fortawesome/free-solid-svg-icons"
 import classes from "./Profile.module.css"
-import bg_photo from "../../assets/images/pexels-1.jpg"
+import { get_random_img } from './random-img'
 import photo from "../../assets/images/skills-01.jpg"
 import { useSelector } from "react-redux"
-import Welcome from "../../Ui/welcome/Welcome"
-import { useState } from "react"
+// import { useState } from "react"
 
+const bg_photo = get_random_img()
 const Profile = () => {
     const userData = useSelector((state) => state.user.user)
     const tasks = useSelector((state) => state.tasks.tasks)
@@ -15,14 +15,13 @@ const Profile = () => {
     const tasksCount = tasks.length
     const notesCount = notes.length
     const diariesCount = diaries.length
-    const [welcomeState, setWelcomeState] = useState(true);
-    const closeWelcomeMessage = () => {
-        setWelcomeState(false)
+    const submitHandler = (e) => {
+        e.preventDefault()
+        console.log(e.target.files[0])
     }
     return (
         <>
             <div className={ classes.profile_page }>
-                {/* { welcomeState && <Welcome close={ closeWelcomeMessage }>{ userData.name }</Welcome> } */ }
                 <div style={ { backgroundImage: `url(${bg_photo})` } } className={ classes.profile_landing }>
                     <div className={ classes.options_icon }>
                         <FontAwesomeIcon className={ classes.icon } icon={ faEllipsisVertical } />
@@ -30,6 +29,12 @@ const Profile = () => {
 
                     <div style={ { backgroundImage: `url(${photo})` } } className={ classes.user_photo }></div>
                 </div>
+                {/* <form action='/'
+                    onSubmit={ submitHandler }
+                >
+                    <input type="file" name="image" accept="image/*" src="" alt="" onChange={ submitHandler } />
+                    <input type="submit" value="ok" />
+                </form> */}
                 <div className={ classes.profile_info }>
                     <h2>احصائيات</h2>
                     <div className={ classes.boxes }>

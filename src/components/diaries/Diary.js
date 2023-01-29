@@ -38,7 +38,7 @@ const Diary = (props) => {
         const diary = {
             title: inputRef.current.value,
             subTitle: subTitleRef.current.value,
-            descriptio: textareaRef.current.value,
+            description: textareaRef.current.value,
             points: []
         }
         dispatch(diaryAction.updateDiary({ id: props.item._id, diary }))
@@ -77,7 +77,7 @@ const Diary = (props) => {
                 <input ref={ subTitleRef } defaultValue={ props.item.subTitle } className="input mb-1" type="text" placeholder="Diary SubTitle" />
                 <textarea
                     ref={ textareaRef }
-                    defaultValue={ props.item.descriptio }
+                    defaultValue={ props.item.description }
                     className="input textarea mb-1"
                     placeholder="Diary Description" ></textarea>
                 <div className="btns-flex">
@@ -95,7 +95,7 @@ const Diary = (props) => {
                     <h3>{ props.item.title }</h3>
 
                 </div>
-                <p>{ props.item.descriptio }</p>
+                <p>{ props.item.description }</p>
             </div> }
             {/* *************************** */ }
             {/* transparent background for close itemList*/ }
