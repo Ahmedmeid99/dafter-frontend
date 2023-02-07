@@ -12,6 +12,9 @@ const AddNote = (props) => {
     const textareaRef = useRef('')
     const selectorRef = useRef('')
     //
+    const closeForm = () => {
+        props.setFormModelState(false)
+    }
     const submitHandler = (e) => {
         const note = {
             title: inputRef.current.value,
@@ -19,7 +22,7 @@ const AddNote = (props) => {
             type: selectorRef.current.value
         }
         addNote(note)
-        props.setFormModelState(false)
+        closeForm()
     }
     // add task to database and add the response (Task + its id) to redux (taskSlice)
     const addNote = (note) => {
@@ -37,12 +40,10 @@ const AddNote = (props) => {
             }
         })
     }
-    const closeForm = () => {
-        props.setFormModelState(false)
-    }
+
     return (
         <>
-            { props.formModelState && <div className="form-bg" onClick={ () => props.setFormModelState(false) }></div> }
+            { props.formModelState && <div className="form-bg" onClick={ closeForm }></div> }
             { props.formModelState &&
                 <Form
                     submitHandler={ submitHandler }

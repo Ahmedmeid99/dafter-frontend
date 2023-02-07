@@ -18,7 +18,9 @@ const Task = (props) => {
     // form for edit item
     const [formModelState, setFormModelState] = useState(false);
     const [listBgState, setListBgState] = useState(false);
-
+    const closeForm = () => {
+        setFormModelState(false)
+    }
     const openItemList = () => {
         setListBgState(true)
         setItemListState(true)
@@ -41,10 +43,11 @@ const Task = (props) => {
         const task = {
             title: inputRef.current.value,
             description: textareaRef.current.value,
+            completed: props.item.completed,
             type: ''
         }
         dispatch(taskAction.updateTask({ id: props.item._id, task }))
-        setFormModelState(false)
+        closeForm()
     }
     /////////////////////////////////////////////////////////
     const [taskDetailsState, setTaskDetailsState] = useState(false);
@@ -58,15 +61,12 @@ const Task = (props) => {
     /////////////////////////////////////////////////////////
 
     const updatedAt = fixTime(props.item.updatedAt)
-    const closeForm = () => {
-        props.setFormModelState(false)
-    }
     return (
         <>
             {/* *************************** */ }
             {/* form for update task*/ }
             {/* *************************** */ }
-            { formModelState && <div className="form-bg" onClick={ () => setFormModelState(false) }></div> }
+            { formModelState && <div className="form-bg" onClick={ closeForm }></div> }
             { formModelState &&
                 <Form
                     submitHandler={ updateHandler }

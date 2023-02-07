@@ -16,6 +16,9 @@ const Note = (props) => {
     const [formModelState, setFormModelState] = useState(false);
     const [listBgState, setListBgState] = useState(false);
 
+    const closeForm = () => {
+        setFormModelState(false)
+    }
     const openItemList = () => {
         setListBgState(true)
         setItemListState(true)
@@ -44,7 +47,7 @@ const Note = (props) => {
             type: selectorRef.current.value
         }
         dispatch(noteAction.updateNote({ id: props.item._id, note }))
-        setFormModelState(false)
+        closeForm()
     }
     /////////////////////////////////////////////////////////
     const [taskDetailsState, setTaskDetailsState] = useState(false);
@@ -62,15 +65,13 @@ const Note = (props) => {
     } else if (props.item.type === 'home') {
         typeColor = '#28c111'
     }
-    const closeForm = () => {
-        props.setFormModelState(false)
-    }
+
     return (
         <>
             {/* *************************** */ }
             {/* form for update task*/ }
             {/* *************************** */ }
-            { formModelState && <div className="form-bg" onClick={ () => setFormModelState(false) }></div> }
+            { formModelState && <div className="form-bg" onClick={ closeForm }></div> }
             { formModelState &&
                 <Form
                     submitHandler={ updateHandler }

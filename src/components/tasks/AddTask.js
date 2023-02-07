@@ -11,6 +11,9 @@ const AddTask = (props) => {
     const inputRef = useRef('')
     const textareaRef = useRef('')
     //
+    const closeForm = () => {
+        props.setFormModelState(false)
+    }
     const submitHandler = () => {
         const task = {
             title: inputRef.current.value,
@@ -18,7 +21,7 @@ const AddTask = (props) => {
             type: ''
         }
         addTask(task)
-        props.setFormModelState(false)
+        closeForm()
     }
     // add task to database and add the response (Task + its id) to redux (taskSlice)
     const addTask = (task) => {
@@ -36,12 +39,10 @@ const AddTask = (props) => {
             }
         })
     }
-    const closeForm = () => {
-        props.setFormModelState(false)
-    }
+
     return (
         <>
-            { props.formModelState && <div className="form-bg" onClick={ () => props.setFormModelState(false) }></div> }
+            { props.formModelState && <div className="form-bg" onClick={ closeForm }></div> }
             { props.formModelState &&
                 <Form
                     submitHandler={ submitHandler }
