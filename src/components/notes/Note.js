@@ -7,6 +7,7 @@ import noteAction from "../../redux/noteSlice";
 import Form from "../../Ui/form/Form";
 import Input from "../../Ui/form/Input";
 import Textarea from "../../Ui/form/Textarea";
+import fixTime from "../../modules/fixTime";
 const Note = (props) => {
     const dispatch = useDispatch()
     const [itemListState, setItemListState] = useState(false);
@@ -51,20 +52,8 @@ const Note = (props) => {
     /////////////////////////////////////////////////////////
     const deleteItem = () => dispatch(noteAction.removeNote(props.item._id))
     /////////////////////////////////////////////////////////
-    const fixTime = () => {
-        let updatedAt = 'few moments ago'
-        if (props.item.updatedAt) {
-            const oldDate = props.item.updatedAt
-            const dateArr = oldDate.replace(/T/, ' ').replace(/\..+/, '').split(' ')
-            const date = dateArr[0].split('-')
-            const time = dateArr[1].split(':')
-            updatedAt = `${date[2]}/${date[1]}/${date[0]}  ${time[0]}:${time[1]}`
-            return updatedAt
-        } else {
-            return updatedAt
-        }
-    }
-    const updatedAt = fixTime()
+
+    const updatedAt = fixTime(props.item.updatedAt)
     let typeColor = ''
     if (props.item.type === 'learn') {
         typeColor = '#1176c1'

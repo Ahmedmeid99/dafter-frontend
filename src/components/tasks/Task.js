@@ -7,6 +7,7 @@ import taskAction from "../../redux/taskSlice";
 import Form from "../../Ui/form/Form";
 import Input from "../../Ui/form/Input";
 import Textarea from "../../Ui/form/Textarea";
+import fixTime from "../../modules/fixTime";
 const Task = (props) => {
     const dispatch = useDispatch()
     useEffect(() => {
@@ -55,20 +56,8 @@ const Task = (props) => {
     }
     const deleteItem = () => dispatch(taskAction.removeTask(props.item._id))
     /////////////////////////////////////////////////////////
-    const fixTime = () => {
-        let updatedAt = 'few moments ago'
-        if (props.item.updatedAt) {
-            const oldDate = props.item.updatedAt
-            const dateArr = oldDate.replace(/T/, ' ').replace(/\..+/, '').split(' ')
-            const date = dateArr[0].split('-')
-            const time = dateArr[1].split(':')
-            updatedAt = `${date[2]}/${date[1]}/${date[0]}  ${time[0]}:${time[1]}`
-            return updatedAt
-        } else {
-            return updatedAt
-        }
-    }
-    const updatedAt = fixTime()
+
+    const updatedAt = fixTime(props.item.updatedAt)
     const closeForm = () => {
         props.setFormModelState(false)
     }
