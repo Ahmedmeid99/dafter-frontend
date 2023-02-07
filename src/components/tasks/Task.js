@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from "react-redux"
 import classes from "./Task.module.css"
 import { useState, useRef, useEffect } from "react";
 import taskAction from "../../redux/taskSlice";
+import Form from "../../Ui/form/Form";
+import Input from "../../Ui/form/Input";
+import Textarea from "../../Ui/form/Textarea";
 const Task = (props) => {
     const dispatch = useDispatch()
     useEffect(() => {
@@ -67,25 +70,36 @@ const Task = (props) => {
         }
     }
     const updatedAt = fixTime()
+    const closeForm = () => {
+        props.setFormModelState(false)
+    }
     return (
         <>
             {/* *************************** */ }
             {/* form for update task*/ }
             {/* *************************** */ }
             { formModelState && <div className="form-bg" onClick={ () => setFormModelState(false) }></div> }
-            { formModelState && <form className="form" onSubmit={ updateHandler }>
-                <div className="btn_close_form"><FontAwesomeIcon className="icon" icon={ faXmark } onClick={ () => setFormModelState(false) } /></div>
-                <input ref={ inputRef } defaultValue={ props.item.title } className="input mb-1" type="text" placeholder="Task Title" />
-                <textarea
-                    ref={ textareaRef }
-                    defaultValue={ props.item.description }
-                    className="input textarea mb-1"
-                    placeholder="Task Description" ></textarea>
-                <div className="btns-flex">
-                    <div className="btn-form btn-send" onClick={ updateHandler }>Update</div>
-                    <div className="btn-form btn-cancle" onClick={ () => setFormModelState(false) }>Cancle</div>
-                </div>
-            </form> }
+            { formModelState &&
+                <Form
+                    submitHandler={ updateHandler }
+                    closeForm={ closeForm }
+                    formType={ 'Update' }
+                >
+                    <Input
+                        type='text'
+                        placeholder="Task Title"
+                        input_ref={ inputRef }
+                        defaultValue={ props.item.title }
+                    />
+                    <Textarea
+                        type='text'
+                        name="Task description"
+                        placeholder="Task Description"
+                        textarea_ref={ textareaRef }
+                        defaultValue={ props.item.description }
+                    />
+                </Form>
+            }
             {/* *************************** */ }
             {/* *************************** */ }
             {/* Task details (show)*/ }

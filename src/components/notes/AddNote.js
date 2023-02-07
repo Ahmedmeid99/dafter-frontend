@@ -1,19 +1,18 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faXmark } from "@fortawesome/free-solid-svg-icons"
 import { useDispatch } from "react-redux"
 import { useRef } from "react"
 import noteAction from "../../redux/noteSlice"
 import { token, URL } from "../../Api/variables"
+import Form from "../../Ui/form/Form"
+import Input from "../../Ui/form/Input"
+import Textarea from "../../Ui/form/Textarea"
 
 const AddNote = (props) => {
-
     const dispatch = useDispatch()
     const inputRef = useRef('')
     const textareaRef = useRef('')
     const selectorRef = useRef('')
     //
     const submitHandler = (e) => {
-        e.preventDefault()
         const note = {
             title: inputRef.current.value,
             description: textareaRef.current.value,
@@ -38,23 +37,36 @@ const AddNote = (props) => {
             }
         })
     }
+    const closeForm = () => {
+        props.setFormModelState(false)
+    }
     return (
         <>
             { props.formModelState && <div className="form-bg" onClick={ () => props.setFormModelState(false) }></div> }
-            { props.formModelState && <form className="form" onSubmit={ submitHandler }>
-                <div className="btn_close_form"><FontAwesomeIcon className="icon" icon={ faXmark } onClick={ () => props.setFormModelState(false) } /></div>
-                <input ref={ inputRef } className="input mb-1" type="text" placeholder="Note Title" />
-                <textarea ref={ textareaRef } className="input textarea mb-1" name="Task description" placeholder="Note Description"></textarea>
-                <div className="btns-flex">
-                    <select name="learn" ref={ selectorRef } defaultValue={ 'learn' }>
+            { props.formModelState &&
+                <Form
+                    submitHandler={ submitHandler }
+                    closeForm={ closeForm }
+                    formType={ 'Add' }
+                >
+                    <Input
+                        type='text'
+                        placeholder="Note Title"
+                        input_ref={ inputRef }
+                    />
+                    <Textarea
+                        type='text'
+                        name="Note description"
+                        placeholder="Note Description"
+                        textarea_ref={ textareaRef }
+                    />
+                    <select className="select" name="learn" ref={ selectorRef } defaultValue={ 'learn' }>
                         <option value="learn">learn</option>
                         <option value="work">Work</option>
                         <option value="home">Home</option>
                     </select>
-                    <div className="btn-form btn-send" onClick={ submitHandler }>Add</div>
-                    <div className="btn-form btn-cancle" onClick={ () => props.setFormModelState(false) }>Cancle</div>
-                </div>
-            </form> }
+                </Form> }
+
         </>
     )
 }

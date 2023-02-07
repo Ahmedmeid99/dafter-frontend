@@ -1,18 +1,17 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faXmark } from "@fortawesome/free-solid-svg-icons"
 import { useDispatch } from "react-redux"
 import { useRef } from "react"
 import taskAction from "../../redux/taskSlice"
 import { token, URL } from "../../Api/variables"
+import Form from "../../Ui/form/Form"
+import Input from "../../Ui/form/Input"
+import Textarea from "../../Ui/form/Textarea"
 
 const AddTask = (props) => {
-
     const dispatch = useDispatch()
     const inputRef = useRef('')
     const textareaRef = useRef('')
     //
-    const submitHandler = (e) => {
-        e.preventDefault()
+    const submitHandler = () => {
         const task = {
             title: inputRef.current.value,
             description: textareaRef.current.value,
@@ -37,18 +36,30 @@ const AddTask = (props) => {
             }
         })
     }
+    const closeForm = () => {
+        props.setFormModelState(false)
+    }
     return (
         <>
             { props.formModelState && <div className="form-bg" onClick={ () => props.setFormModelState(false) }></div> }
-            { props.formModelState && <form className="form" onSubmit={ submitHandler }>
-                <div className="btn_close_form"><FontAwesomeIcon className="icon" icon={ faXmark } onClick={ () => props.setFormModelState(false) } /></div>
-                <input ref={ inputRef } className="input mb-1" type="text" placeholder="Task Title" />
-                <textarea ref={ textareaRef } className="input textarea mb-1" name="Task description" placeholder="Task Description"></textarea>
-                <div className="btns-flex">
-                    <div className="btn-form btn-send" onClick={ submitHandler }>Add</div>
-                    <div className="btn-form btn-cancle" onClick={ () => props.setFormModelState(false) }>Cancle</div>
-                </div>
-            </form> }
+            { props.formModelState &&
+                <Form
+                    submitHandler={ submitHandler }
+                    closeForm={ closeForm }
+                    formType={ 'Add' }
+                >
+                    <Input
+                        type='text'
+                        placeholder="Task Title"
+                        input_ref={ inputRef }
+                    />
+                    <Textarea
+                        type='text'
+                        name="Task description"
+                        placeholder="Task Description"
+                        textarea_ref={ textareaRef }
+                    />
+                </Form> }
         </>
     )
 }
