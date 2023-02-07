@@ -36,8 +36,7 @@ const Note = (props) => {
         setItemListState(false)
         setListBgState(false)
     }
-    const updateHandler = (e) => {
-        e.preventDefault()
+    const updateHandler = () => {
         const note = {
             title: inputRef.current.value,
             description: textareaRef.current.value,

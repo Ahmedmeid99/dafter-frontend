@@ -36,8 +36,7 @@ const Task = (props) => {
         setTaskDetailsState(true)
         setItemListState(false)
     }
-    const updateHandler = (e) => {
-        e.preventDefault()
+    const updateHandler = () => {
         const task = {
             title: inputRef.current.value,
             description: textareaRef.current.value,
