@@ -7,7 +7,7 @@ const Input = (props) => {
             type={ props.type }
             placeholder={ props.placeholder }
             ref={ props.input_ref }
-            value={ props.defaultValue }
+            defaultValue={ props.defaultValue }
         />
     )
 }

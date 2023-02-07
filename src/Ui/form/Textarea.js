@@ -7,7 +7,7 @@ const Textarea = (props) => {
             name={ props.name }
             placeholder={ props.placeholder }
             ref={ props.textarea_ref }
-            value={ props.defaultValue }
+            defaultValue={ props.defaultValue }
         ></textarea>
     )
 }
