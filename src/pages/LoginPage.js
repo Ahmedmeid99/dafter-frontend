@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
-
+import { URL } from "../Api/variables"
+import Form from "../Ui/form/Form"
+import Input from "../Ui/form/Input"
 const Login = () => {
     // 
     const [isLogin, setIsLogin] = useState(true)
@@ -12,10 +14,8 @@ const Login = () => {
     const toggleHandler = () => setIsLogin(!isLogin)
 
     //////////////////////////////////////
-    const URL = "https://dafter-backend-production.up.railway.app"
     //////////////////////////////////////
     const submitHandler = async (e) => {
-        e.preventDefault()
         if (isLogin) {
             const response = await fetch(`${URL}/api/users/login`, {
                 method: 'POST',
@@ -54,17 +54,46 @@ const Login = () => {
             navigate('/')
         }
     }, [])
-    return (<form className='form' onSubmit={ submitHandler }>
-        <h3 className='form-title'>{ isLogin ? 'Sign in' : 'Sign up' }</h3>
-        { !isLogin && <input ref={ nameInput } className={ 'input mb-3' } type="text" placeholder='name' /> }
-        <input ref={ emailInput } className={ 'input mb-3' } type="email" placeholder='email' />
-        <input ref={ passwordInput } className={ 'input mb-3' } type="password" placeholder='password' />
-        <div className="action">
-            <button className='btn-form btn-send'>{ !isLogin ? 'sign up' : 'sign in' }</button>
-            { !isLogin && <p onClick={ toggleHandler } className="toggle-text">Do you want to sign in ? </p> }
-            { isLogin && <p onClick={ toggleHandler } className="toggle-text">Do you want to sign up ? </p> }
-        </div>
-    </form>)
+    return (
+        <Form
+            submitHandler={ submitHandler }
+            formType={ 'Submit' }
+        >
+            <h3 className='form-title'>{ isLogin ? 'Sign in' : 'Sign up' }</h3>
+            { !isLogin &&
+                <Input
+                    type='text'
+                    placeholder="name"
+                    input_ref={ nameInput }
+                />
+            }
+            <Input
+                type='email'
+                placeholder="email"
+                input_ref={ emailInput }
+            />
+            <Input
+                type='password'
+                placeholder="password"
+                input_ref={ passwordInput }
+            />
+            <div className="action">
+                <button className='btn-form btn-send'>{ !isLogin ? 'sign up' : 'sign in' }</button>
+                { !isLogin && <p onClick={ toggleHandler } className="toggle-text">Do you want to sign in ? </p> }
+                { isLogin && <p onClick={ toggleHandler } className="toggle-text">Do you want to sign up ? </p> }
+            </div>
+        </Form>)
+    // <form className='form' onSubmit={ submitHandler }>
+    //     <h3 className='form-title'>{ isLogin ? 'Sign in' : 'Sign up' }</h3>
+    //     { !isLogin && <input ref={ nameInput } className={ 'input mb-3' } type="text" placeholder='name' /> }
+    //     <input ref={ emailInput } className={ 'input mb-3' } type="email" placeholder='email' />
+    //     <input ref={ passwordInput } className={ 'input mb-3' } type="password" placeholder='password' />
+    //     <div className="action">
+    //         <button className='btn-form btn-send'>{ !isLogin ? 'sign up' : 'sign in' }</button>
+    //         { !isLogin && <p onClick={ toggleHandler } className="toggle-text">Do you want to sign in ? </p> }
+    //         { isLogin && <p onClick={ toggleHandler } className="toggle-text">Do you want to sign up ? </p> }
+    //     </div>
+    // </form>)
 }
 
 export default Login

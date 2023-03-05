@@ -9,15 +9,16 @@ const Form = (props) => {
     const closeForm = () => {
         props.closeForm()
     }
+    const isLoginform = props.formType == 'Submit'
     return (
         <form className={ classes.form } onSubmit={ submitHandler }>
             <div className={ classes.btn_close_form }><FontAwesomeIcon className={ classes.icon } icon={ faXmark } onClick={ closeForm } /></div>
             {/* (children) input & textarea */ }
             { props.children }
-            <div className={ classes["btns-flex"] }>
+            { !isLoginform && <div className={ classes["btns-flex"] }>
                 <div className={ `${classes["btn-form"]} ${classes["btn-send"]}` } onClick={ submitHandler }>{ props.formType }</div>
                 <div className={ `${classes["btn-form"]} ${classes["btn-cancle"]}` } onClick={ closeForm }>Cancle</div>
-            </div>
+            </div> }
         </form>
     )
 }

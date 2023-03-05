@@ -55,6 +55,30 @@ body {
   height: 101%;
   z-index: 99;
 }
+.form-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 4rem;
+  padding: 1rem;
+  background-color: #bedefb;
+  border: 3px solid #0e4370;
+  color: #12558f;
+}
+.btn-form {
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding: 0.8rem 1.4rem;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.btn-send {
+  color: #eee;
+  background: #12558f;
+  margin-right: 1rem;
+  border: none;
+  border-bottom: 0.5rem solid #052d50;
+}
 .list-bg {
   position: fixed;
   top: 50%;
