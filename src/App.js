@@ -25,6 +25,7 @@ const App = () => {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
+                "Access-Control-Allow-Origin": "*",
                 'Authorization': token
             }
         }).then((data) => data.json()).then((res) => {
@@ -38,6 +39,7 @@ const App = () => {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
+                "Access-Control-Allow-Origin": "*",
                 'Authorization': token
             }
         }).then((data) => data.json()).then((res) => {
@@ -51,6 +53,7 @@ const App = () => {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
+                "Access-Control-Allow-Origin": "*",
                 'Authorization': token
             }
         }).then((data) => data.json()).then((res) => {
